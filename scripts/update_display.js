@@ -21,22 +21,29 @@ setTimeout(() => {
     
 }, 10000);
 
-// The wake lock sentinel.
-let wakeLock = null;
+// Check if the wake lock API is available
+if ('wakeLock' in navigator) {
+    // The wake lock sentinel.
+    let wakeLock = null;
 
-// Function that attempts to request a wake lock.
-const requestWakeLock = async () => {
-    try {
-        wakeLock = await navigator.wakeLock.request('screen');
-        wakeLock.addEventListener('release', () => {
-            console.log('Wake Lock was released');
-    });
-    console.log('Wake Lock is active');
-  } catch (err) {
-    console.error(`${err.name}, ${err.message}`);
-  }
-};
+    // Function that attempts to request a wake lock.
+    const requestWakeLock = async () => {
+        try {
+            wakeLock = await navigator.wakeLock.request('screen');
+            wakeLock.addEventListener('release', () => {
+                console.log('Wake Lock was released');
+            });
+            console.log('Wake Lock is active');
+        } catch (err) {
+            console.error(`${err.name}, ${err.message}`);
+        }
+    };
 
+    // Request a wake lock
+    requestWakeLock();
+} else {
+    console.error("Wake Lock API is not supported by this browser.");
+}
 
 // Refresh the page every 4 hours (this helps with the excess memory usage done by the website)
 setTimeout(() => {

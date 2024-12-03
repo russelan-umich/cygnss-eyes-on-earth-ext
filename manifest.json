@@ -1,0 +1,23 @@
+{
+    "manifest_version": 3,
+    "name": "CYGNSS Eyes on Earth",
+    "description": "Helps long term display of CYGNSS views on NASA's Eyes on Earth",
+    "version": "0.0.1",
+    "icons": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    },
+    "content_scripts": [
+    {
+      "js": ["scripts/update_display.js"],
+      "matches": [
+        "*://eyes.nasa.gov/*",
+        "https://science.nasa.gov/eyes/"
+
+      ]
+    }
+  ]
+  }
+  

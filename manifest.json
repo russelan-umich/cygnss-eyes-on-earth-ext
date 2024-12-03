@@ -13,8 +13,7 @@
     {
       "js": ["scripts/update_display.js"],
       "matches": [
-        "*://eyes.nasa.gov/*",
-        "https://science.nasa.gov/eyes/"
+        "*://eyes.nasa.gov/*"
 
       ]
     }

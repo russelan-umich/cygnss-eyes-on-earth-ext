@@ -5,11 +5,11 @@ const url = window.location.href;
 // https://eyes.nasa.gov/apps/earth/#/satellites/cygnss-3
 const spacecraft_number = url.split('-')[1];
 
-// Wait for 10 seconds before updating the title of the web page
+// Wait for 10 seconds for the page to render before making changes
 setTimeout(() => {
 
     // Get the title of the web page
-    const spafecraft_title = document.querySelectorAll('[class=" title outline"]');
+    let spafecraft_title = document.querySelectorAll('[class=" title outline"]');
 
     // Make sure at least one title is found
     if (spafecraft_title.length === 0) {
@@ -20,3 +20,9 @@ setTimeout(() => {
     }
     
 }, 10000);
+
+
+// Refresh the page every 4 hours (this helps with the excess memory usage done by the website)
+setTimeout(() => {
+    window.location.reload();
+}, 14400000);
